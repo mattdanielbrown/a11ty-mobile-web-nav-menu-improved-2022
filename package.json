@@ -7,25 +7,22 @@
   "private": "true",
   "scripts": {
     "build": "parcel build index.html",
-    "dev": "parcel index.html --open",
+    "dev": "parcel index.html",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "2.8.2",
-    "@parcel/transformer-sass": "2.8.2",
-    "@parcel/transformer-webmanifest": "2.8.2",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.20",
-    "sass": "^1.57.1"
+    "@parcel/packager-raw-url": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-webmanifest": "^2.7.0",
+    "parcel": "^2.7.0"
   },
   "dependencies": {
-    "bourbon": "latest",
-    "inter-ui": "latest",
-    "mobi.css": "latest",
-    "modern-normalize": "latest",
-    "reseter.css": "latest",
-    "sanitize.css": "latest",
-    "smoothscroll-polyfill": "latest"
+    "bourbon": "^7.2.0",
+    "inter-ui": "^3.19.3",
+    "mobi.css": "^3.1.1",
+    "modern-normalize": "^1.1.0",
+    "reseter.css": "^2.0.0",
+    "sanitize.css": "^13.0.0"
   }
 }
