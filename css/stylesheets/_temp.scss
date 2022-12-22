@@ -1,0 +1,491 @@
+
+
+@include min-width(1024px) {
+	$container-width      : 98%;
+	$container-max-pixels : 960px;
+	$container-max-chars  : 72ch;
+	$container-max-width  : $container-max-chars;
+}
+@include min-width(1280px) {
+	$container-width      : 98%;
+	$container-max-pixels : 1024px;
+	$container-max-chars  : 80ch;
+	$container-max-width  : $container-max-chars;
+}
+
+//------------------------------------------------------------------------------
+// Base
+//------------------------------------------------------------------------------
+
+html {
+	box-sizing : border-box !important;
+}
+*, *::before, *::after {
+	box-sizing : inherit !important;
+}
+
+//------------------------------------------------------------------------------
+// Layout
+//------------------------------------------------------------------------------
+
+.container, section, article, hgroup {
+	@extend %container;
+}
+html, body {
+	margin      : 0;
+	padding     : 0;
+	width       : 100vw;
+	min-width   : 320px;
+	max-width   : 100vw;
+	overflow-x  : hidden;
+	height      : 100%;
+	min-height  : 100vh;
+	line-height : 1;
+	font-family : $font-family;
+}
+body {
+	min-width       : 100vw !important;
+	display         : flex;
+	flex-direction  : column;
+	justify-content : space-between;
+	
+	& > header:first-of-type {
+		background-color : ghostwhite;
+		margin           : 0;
+		padding          : 0;
+		width            : 100vw;
+		vertical-align   : middle;
+		
+		hgroup {
+			padding : 2em 0;
+		}
+	}
+	
+	& > footer:last-of-type {
+		width            : 100%;
+		background-color : ghostwhite;
+		padding          : 2em 0;
+		text-align       : center;
+		margin           : 0;
+		
+		p {
+			line-height    : 1;
+			font-size      : small;
+			color          : gray;
+			font-weight    : 500;
+			margin         : 0 auto;
+			text-align     : center;
+			vertical-align : middle;
+		}
+	}
+}
+main {
+	background-color : #fff;
+	flex-grow        : 1;
+	padding          : 1em 0;
+	
+	section {
+		padding       : 1em 0;
+		margin-bottom : 2em;
+	}
+}
+
+//------------------------------------------------------------------------------
+// Typography
+//------------------------------------------------------------------------------
+
+p {
+	font-family : $font-family;
+	line-height : 1.5;
+	margin      : 0 auto 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family : $font-family;
+	line-height : 1;
+	margin      : 1rem auto;
+	font-weight : 600;
+	display     : block;
+	width       : 100%;
+	
+	small {
+		font-size : smaller;
+		width     : 100%;
+		display   : block;
+		margin    : .5rem auto;
+	}
+}
+
+a, a:link, a:visited {
+	color           : $primary-color;
+	text-decoration : none;
+	font-size       : 1em;
+	line-height     : 1;
+	cursor          : pointer;
+	transition      : all 120ms ease-out;
+	font-family     : $font-family;
+}
+
+//------------------------------------------------------------------------------
+// Navigation Bar
+//------------------------------------------------------------------------------
+
+nav {
+	margin           : 0;
+	padding          : 0;
+	width            : 100%;
+	position         : relative;
+	background-color : $secondary-color;
+	color            : white;
+	line-height      : 1 !important;
+	
+	ul {
+		@extend %list-reset;
+		background-color : inherit;
+		color            : inherit;
+		flex-direction   : column;
+		width            : 100%;
+		margin           : 0;
+		padding          : 0;
+		gap              : 0;
+		
+		li {
+			background-color : inherit;
+			color            : inherit;
+			display          : block;
+			width            : 100%;
+			margin           : 0;
+			padding          : 0;
+			
+			a, a:link, a:visited {
+				background-color : inherit;
+				color            : inherit;
+				display          : block;
+				width            : 100%;
+				text-align       : center;
+				padding          : 1.5em 0;
+				line-height      : 1;
+				margin           : 0;
+				outline          : solid 2px rgba($primary-color, 0.0);
+				outline-offset   : -3px;
+				letter-spacing   : 0.5px;
+				
+				&:hover {
+					background-color : darken($secondary-color, 5%);
+				}
+				
+				&:focus {
+					background-color : darken($secondary-color, 10%);
+					outline-color    : $primary-color;
+					box-shadow       : 0 0 0 3px rgba($primary-color, 0.25);
+				}
+				
+				&:active {
+					background-color : darken($secondary-color, 15%);
+				}
+			}
+		}
+	}
+	
+	@include min-width(560px) {
+		
+		ul {
+			flex-direction  : row;
+			justify-content : flex-end;
+			align-items     : center;
+			align-content   : center;
+			gap             : 0 !important;
+			width           : $container-width;
+			max-width       : $container-max-width;
+			margin          : $container-margins;
+			
+			li {
+				width   : unset;
+				display : inline-block;
+				height  : auto;
+				
+				a, a:link, a:visited {
+					height         : auto;
+					width          : unset;
+					display        : inline-block;
+					padding        : 1em;
+					padding-bottom : 1.25em;
+					vertical-align : middle;
+					line-height    : 1;
+					margin         : 0;
+					letter-spacing : unset;
+				}
+			}
+		}
+	}
+}
+
+[aria-current='page'] {
+	cursor           : not-allowed !important;
+	pointer-events   : none !important;
+	color            : rgba(#fff, 0.25) !important;
+	background-color : darken($secondary-color, 5%) !important;
+}
+
+//------------------------------------------------------------------------------
+// Mobile Navigation Menu Control
+//------------------------------------------------------------------------------
+
+#mobile-nav-control {
+	@extend %visually-hidden;
+	@extend %fix-iOS-tap-highlight;
+	user-select : none !important;
+	
+	&:focus {
+		& ~ label {
+			outline        : 2px $primary-color solid;
+			outline-offset : -2px;
+		}
+	}
+}
+
+#mobile-nav-control-label {
+	display          : inline-block;
+	font-weight      : 600;
+	line-height      : 1;
+	@extend %fix-iOS-tap-highlight;
+	user-select      : none !important;
+	cursor           : pointer;
+	transition       : all 120ms ease-out;
+	padding          : 1em;
+	background-color : inherit;
+	float            : right;
+	// outline: red solid 2px;
+	// outline-offset: -2px;
+	&:hover {
+		background-color : darken($secondary-color, 5%);
+	}
+	
+	&:focus {
+		outline          : 2px $primary-color solid;
+		outline-offset   : -2px;
+		background-color : darken($secondary-color, 10%);
+		outline-color    : $primary-color;
+		box-shadow       : 0 0 0 3px rgba($primary-color, 0.25);
+	}
+	
+	&:active {
+		background-color : darken($secondary-color, 15%);
+	}
+}
+
+.mobile-nav-control-label-text-content {
+	font-weight : inherit;
+	display     : inline-block;
+	line-height : 1;
+	padding     : 1em;
+	@extend %fix-iOS-tap-highlight;
+	user-select : none !important;
+	@extend %visually-hidden;
+}
+
+.mobile-nav-control-icon-content {
+	@extend %fix-iOS-tap-highlight;
+	user-select : none !important;
+}
+
+#mobile-nav-menu-icon-svg {
+	@extend %fix-iOS-tap-highlight;
+	user-select : none !important;
+	transition  : all 120ms ease-out;
+	box-sizing  : border-box;
+	
+	*, *::before, *::after {
+		@extend %fix-iOS-tap-highlight;
+		user-select : none !important;
+		transition  : all 120ms ease-out;
+		box-sizing  : border-box;
+	}
+	
+	.mobile-nav-control-menu-icon-bar {
+		@extend %fix-iOS-tap-highlight;
+		user-select : none !important;
+		transition  : all 120ms ease-out;
+		box-sizing  : border-box;
+		transform   : none;
+		
+		&:nth-of-type(2) {
+			// fill: lightgreen;
+		}
+		
+		&:last-of-type {
+			// fill: red;
+		}
+	}
+}
+
+#mobile-nav-control:checked {
+	& ~ label {
+		background : darken(tomato, 20%);
+		
+		.mobile-nav-control-menu-icon-bar {
+			transform-origin : center center;
+			
+			&:first-of-type {
+				opacity      : 0 !important;
+				fill-opacity : 0;
+			}
+			
+			&:nth-of-type(2) {
+				// fill: black;
+				transform : translatey(12px) rotate(45deg) translatex(-8px);
+			}
+			
+			&:last-of-type {
+				transform : translatey(-12px) rotate(-45deg) translatex(-8px);
+				// display: none;
+				// fill: black;
+			}
+		}
+		
+		&:hover {
+			background-color : darken(tomato, 25%);
+		}
+		
+		&:focus {
+			background-color : darken(tomato, 30%);
+		}
+		
+		&:active {
+			background-color : darken(tomato, 35%);
+		}
+	}
+	
+	&:hover {
+		& ~ label {
+			background-color : darken(tomato, 25%);
+		}
+	}
+	
+	&:focus {
+		& ~ label {
+			background-color : darken(tomato, 30%);
+		}
+	}
+	
+	&:active {
+		& ~ label {
+			background-color : darken(tomato, 35%);
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+// Media Queries
+//------------------------------------------------------------------------------
+
+@media screen and (max-width : 559px) {
+	nav ul {
+		transform      : translatey(-120%);
+		position       : absolute;
+		opacity        : 0;
+		pointer-events : none;
+		user-select    : none;
+	}
+	nav {
+		height : 4em;
+	}
+	#mobile-nav-control:checked {
+		& ~ ul {
+			transform      : none;
+			position       : relative;
+			opacity        : 1;
+			pointer-events : unset;
+		}
+	}
+}
+
+@include min-width(560px) {
+	nav, nav ul, nav li {
+		transition : none !important;
+	}
+	#mobile-nav-control,
+	#mobile-nav-control-label,
+	#mobile-nav-control-icon-svg,
+	.mobile-nav-control-label-text-content,
+	.mobile-nav-control-icon-content {
+		position       : absolute;
+		white-space    : nowrap;
+		width          : 1px;
+		height         : 1px;
+		overflow       : hidden;
+		border         : 0;
+		padding        : 0;
+		clip           : rect(0 0 0 0);
+		clip-path      : inset(50%);
+		margin         : -1px;
+		display        : none !important;
+		pointer-events : none !important;
+		opacity        : 0 !important;
+	}
+}
+
+//------------------------------------------------------------------------------
+// Skip-to-main-content link
+//------------------------------------------------------------------------------
+
+/** @IMPORTANT : This is the `SKIP TO MAIN CONTENT` popup option for navigation with TAB key. **/
+[tabindex='-1']:focus:not(:focus-visible) { outline : 0 !important; }
+
+.skip-link,.skip-link:link,.skip-link:visited {
+	text-decoration : none !important;
+	position         : absolute;
+	// top: -3.5rem;
+	border-radius    : 0 3px 8px 0;
+	font-weight      : 500;
+	left             : 0;
+	// background: #000000;,
+	// background-color: #333333;
+	color            : white !important;
+	padding          : .75em 1.25em;
+	letter-spacing   : 1px;
+	
+	transition       : all 150ms ease-out !important;
+	cursor           : pointer;
+	appearance       : none;
+	display          : block;
+	background-color : #222555;
+	border           : 2px solid #222555;
+	z-index          : -100;
+	transform        : translate3d(0, -3.5rem, 0);
+	
+	&:hover {
+		text-decoration  : none !important;
+		$_color          : darken(#222555, 10%);
+		background-color : $_color;
+		border-color     : $_color;
+		color: white;
+	}
+	
+	&:focus {
+		text-decoration  : none !important;
+		// top: 0 !important;
+		transform        : translate3d(0, 0, 0);
+		$_color          : darken(#222555, 16%);
+		color: white;
+		background-color : $_color;
+		border-color     : royalblue;
+		outline          : none;
+		z-index          : 2200;
+		box-shadow       : 0 0 0 6px rgba(royalblue, 0.35);
+		
+	}
+	
+	&:active {
+		text-decoration  : none !important;
+		$_color          : darken(#222555, 35%);
+		color: white;
+		background-color : $_color;
+		border-color     : $_color;
+	}
+	
+	&:link, &:visited {
+		text-decoration : none !important;
+		
+	}
+}

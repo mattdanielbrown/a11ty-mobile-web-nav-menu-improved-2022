@@ -1,0 +1,18 @@
+$primary-color        : #5055ff;
+$secondary-color      : #1e293b;
+
+
+$container-width      : 92% !default;
+$container-max-width  : 768px !default;
+$container-max-pixels : 768px;
+$container-max-chars  : 68ch;
+$container-max-width  : $container-max-chars;
+$container-margins    : 0 auto;
+
+
+$system-fontstack     : system-sans-serif, system-ui,
+-apple-system, BlinkMacSystemFont,
+'Segoe UI', Roboto, Helvetica, Arial,
+sans-serif, 'Apple Color Emoji',
+'Segoe UI Emoji', 'Segoe UI Symbol';
+$font-family          : $system-fontstack !default;

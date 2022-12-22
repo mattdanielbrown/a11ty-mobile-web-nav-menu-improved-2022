@@ -1,0 +1,31 @@
+{
+  "name": "a11ty-mobile-web-nav-menu-improved-2022",
+  "version": "0.0.1",
+  "description": "Improved accessible mobile web navigation menu control with an animated svg hamburger icon",
+  "license": "MIT",
+  "author": "Matt Daniel Brown",
+  "private": true,
+  "scripts": {
+    "build": "parcel build index.html",
+    "dev": "parcel index.html --open",
+    "start": "npm run build && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.8.2",
+    "@parcel/transformer-sass": "2.8.2",
+    "@parcel/transformer-webmanifest": "2.8.2",
+    "parcel": "latest",
+    "postcss": "^8.4.20",
+    "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "bourbon": "latest",
+    "inter-ui": "latest",
+    "mobi.css": "latest",
+    "modern-normalize": "latest",
+    "reseter.css": "latest",
+    "sanitize.css": "latest",
+    "smoothscroll-polyfill": "latest"
+  }
+}
