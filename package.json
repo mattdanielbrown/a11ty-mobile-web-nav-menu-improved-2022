@@ -4,7 +4,7 @@
   "description": "Improved accessible mobile web navigation menu control with an animated svg hamburger icon",
   "license": "MIT",
   "author": "Matt Daniel Brown",
-  "private": true,
+  "private": "true",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",

@@ -1,6 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "a11ty-mobile-menu",
+  "name": "A11ty Mobile Navigation Menu 2022",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
@@ -8,5 +8,5 @@
   }],
   "start_url": "/?utm_source=homescreen",
   "background_color": "#fafafa",
-  "theme_color": "#fafafa"
+  "theme_color": "#5005ff"
 }

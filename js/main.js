@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-function main() {
+const main = () => {
 	
 	document.addEventListener("touchstart", function () {
 	}, true);
 	
 	const mobileNavControl = document.getElementById("mobile-nav-control");
 	
-	let delay = 250; 				// delay between calls
-	let throttled = false; 	// currently throttled?
-	let calls = 0;					// call count
+	let delay     = 250; 				// delay between calls
+	let throttled = false; 	    // currently throttled?
+	let calls     = 0;					// call count
 	
 	// window.resize callback function
 	function getDimensions() {
@@ -38,9 +38,9 @@ function main() {
 	});
 	
 	getDimensions();
-}
+};
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
 	console.log("DOM fully loaded and parsed");
 	main();
 });
