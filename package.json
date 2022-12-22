@@ -12,10 +12,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.7.0",
-    "@parcel/transformer-sass": "^2.7.0",
-    "@parcel/transformer-webmanifest": "^2.7.0",
-    "parcel": "^2.7.0"
+    "@parcel/transformer-sass": "^2.8.2",
+    "parcel": "latest",
+    "parcel-bundler": "^1.12.4",
+    "postcss": "^8.4.16",
+    "sass": "^1.54.8"
   },
   "dependencies": {
     "bourbon": "^7.2.0",
