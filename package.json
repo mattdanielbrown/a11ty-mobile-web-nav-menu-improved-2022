@@ -16,7 +16,7 @@
     "parcel": "latest",
     "parcel-bundler": "^1.12.4",
     "postcss": "^8.4.16",
-    "sass": "^1.54.8"
+    "sass": "^1.97.1"
   },
   "dependencies": {
     "bourbon": "^7.2.0",
